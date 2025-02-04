@@ -1,0 +1,425 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RCD MD PAIR CODE</title>
+  <link rel="stylesheet" href="css/all.min.css">
+  <style>
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-15px) rotate(-2deg); }
+      50% { transform: translateY(0px) rotate(0deg); }
+      75% { transform: translateY(-15px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .box {
+      width: 350px;
+      padding: 25px;
+      position: relative;
+      text-align: center;
+      background-color: rgba(14, 13, 17, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 40%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.2) 60%,
+        rgba(255, 255, 255, 0.2) 100%
+      );
+      transform: rotate(45deg);
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+
+    .box:hover::before {
+      animation: shine 1.5s infinite;
+    }
+
+    .box:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    @keyframes shine {
+      0% { left: -50%; }
+      100% { left: 150%; }
+    }
+
+    #text {
+      color: black ;
+      position: relative;
+      z-index: 2;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .input-container input {
+      border-radius: 1rem;
+      padding: 0.8rem;
+      width: 100%;
+      max-width: 280px;
+      border: 2px solid #eee9e9;
+      color: #333;
+      transition: all 0.3s ease;
+      background: rgba(247, 244, 244, 0.8);
+    }
+
+    .input-container input:focus {
+      border-color: red;
+      outline: none;
+      box-shadow: 0 0 10px rgba(7, 96, 192, 0.5);
+      animation: pulse 1.5s infinite;
+    }
+
+    .input-container button {
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #8a2be2 0%, #800080 100%);
+      font-weight: 900;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .input-container button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      transition: all 0.5s;
+    }
+
+    .input-container button:hover::before {
+      left: 100%;
+    }
+
+    .input-container button:hover {
+      background: linear-gradient(135deg, #A8E4A0 0%, #32CD32 100%);
+      color: #4ccf24;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .input-container button:active {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .centered-text {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 10px 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .whatsapp-button {
+      background: #ec0303;
+      color: rgb(14, 241, 33);
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .whatsapp-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 70%
+      );
+      transform: scale(0);
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .whatsapp-button:hover::before {
+      transform: scale(1);
+      opacity: 0;
+    }
+
+    .whatsapp-button:hover {
+      background: black ;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .whatsapp-button i {
+      margin-right: 10px;
+      font-size: 1.2em;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @media (max-width: 500px) {
+      .input-container input, .input-container button {
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    #waiting-message {
+      font-weight: bold;
+      color: #007bff;
+      margin-top: 10px;
+      animation: pulse 1.5s infinite;
+    }
+
+    #pair {
+      margin-top: 15px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    #copy {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(to right, #ff6b6b, #feca57);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 2s infinite linear;
+      background-size: 200% 100%;
+    }
+
+    #copy:hover {
+      transform: scale(1.05);
+    }
+
+    .blackguard {
+      position: fixed;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: url('https://api.dicebear.com/6.x/bottts/svg?seed=Felix') no-repeat center center;
+      background-size: contain;
+      animation: guardFloat 10s ease-in-out infinite, guardSpin 20s linear infinite;
+      z-index: 1000;
+    }
+
+    @keyframes guardFloat {
+      0%, 100% { bottom: -50px; transform: translateX(-50%) rotate(0deg); }
+      50% { bottom: 20px; transform: translateX(-50%) rotate(10deg); }
+    }
+
+    @keyframes guardSpin {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: particleFloat 15s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-100vh) translateX(100vw); }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles"><div class="particle" style="left: 64.0131vw; animation-duration: 5.39602s; animation-delay: 4.84455s;"></div><div class="particle" style="left: 61.9162vw; animation-duration: 13.7374s; animation-delay: 1.68664s;"></div><div class="particle" style="left: 24.7868vw; animation-duration: 11.2113s; animation-delay: 3.68857s;"></div><div class="particle" style="left: 26.2468vw; animation-duration: 9.63922s; animation-delay: 4.93891s;"></div><div class="particle" style="left: 59.0992vw; animation-duration: 12.3194s; animation-delay: 0.98226s;"></div><div class="particle" style="left: 43.6637vw; animation-duration: 11.2441s; animation-delay: 0.565618s;"></div><div class="particle" style="left: 82.3615vw; animation-duration: 10.3595s; animation-delay: 4.48426s;"></div><div class="particle" style="left: 53.8733vw; animation-duration: 7.88192s; animation-delay: 4.45106s;"></div><div class="particle" style="left: 91.5572vw; animation-duration: 7.36296s; animation-delay: 3.8672s;"></div><div class="particle" style="left: 3.08275vw; animation-duration: 5.56446s; animation-delay: 1.35311s;"></div><div class="particle" style="left: 22.08vw; animation-duration: 8.51025s; animation-delay: 3.00696s;"></div><div class="particle" style="left: 25.2989vw; animation-duration: 11.3197s; animation-delay: 4.98431s;"></div><div class="particle" style="left: 17.7407vw; animation-duration: 11.7961s; animation-delay: 2.41583s;"></div><div class="particle" style="left: 8.46774vw; animation-duration: 7.10411s; animation-delay: 0.572338s;"></div><div class="particle" style="left: 50.2226vw; animation-duration: 5.20094s; animation-delay: 3.96555s;"></div><div class="particle" style="left: 66.9202vw; animation-duration: 10.0359s; animation-delay: 0.303786s;"></div><div class="particle" style="left: 71.3197vw; animation-duration: 12.0625s; animation-delay: 0.369357s;"></div><div class="particle" style="left: 50.2091vw; animation-duration: 14.7044s; animation-delay: 0.225251s;"></div><div class="particle" style="left: 23.8167vw; animation-duration: 11.6598s; animation-delay: 1.05401s;"></div><div class="particle" style="left: 19.522vw; animation-duration: 14.1865s; animation-delay: 2.13738s;"></div><div class="particle" style="left: 57.3282vw; animation-duration: 13.0036s; animation-delay: 3.34423s;"></div><div class="particle" style="left: 26.5301vw; animation-duration: 6.68818s; animation-delay: 0.914765s;"></div><div class="particle" style="left: 20.2226vw; animation-duration: 7.83755s; animation-delay: 1.1242s;"></div><div class="particle" style="left: 1.20843vw; animation-duration: 11.0047s; animation-delay: 2.76316s;"></div><div class="particle" style="left: 92.6102vw; animation-duration: 12.9393s; animation-delay: 2.58746s;"></div><div class="particle" style="left: 40.0425vw; animation-duration: 14.2759s; animation-delay: 1.40866s;"></div><div class="particle" style="left: 59.882vw; animation-duration: 14.1774s; animation-delay: 4.29947s;"></div><div class="particle" style="left: 49.0104vw; animation-duration: 9.56405s; animation-delay: 2.65236s;"></div><div class="particle" style="left: 5.71524vw; animation-duration: 9.55054s; animation-delay: 0.259871s;"></div><div class="particle" style="left: 52.3571vw; animation-duration: 9.83202s; animation-delay: 2.34826s;"></div><div class="particle" style="left: 77.6461vw; animation-duration: 5.30265s; animation-delay: 0.513114s;"></div><div class="particle" style="left: 57.5974vw; animation-duration: 6.83778s; animation-delay: 0.144443s;"></div><div class="particle" style="left: 11.6749vw; animation-duration: 12.7847s; animation-delay: 4.95641s;"></div><div class="particle" style="left: 1.93284vw; animation-duration: 14.2069s; animation-delay: 1.7434s;"></div><div class="particle" style="left: 86.3641vw; animation-duration: 7.88553s; animation-delay: 2.8661s;"></div><div class="particle" style="left: 19.6884vw; animation-duration: 12.1901s; animation-delay: 2.9258s;"></div><div class="particle" style="left: 86.0891vw; animation-duration: 6.07215s; animation-delay: 0.637225s;"></div><div class="particle" style="left: 59.1718vw; animation-duration: 5.69356s; animation-delay: 3.35213s;"></div><div class="particle" style="left: 15.4134vw; animation-duration: 7.16513s; animation-delay: 0.385396s;"></div><div class="particle" style="left: 18.7429vw; animation-duration: 6.18786s; animation-delay: 2.07385s;"></div><div class="particle" style="left: 5.61171vw; animation-duration: 9.81536s; animation-delay: 1.57342s;"></div><div class="particle" style="left: 78.0357vw; animation-duration: 10.9032s; animation-delay: 3.11344s;"></div><div class="particle" style="left: 25.1708vw; animation-duration: 11.3269s; animation-delay: 3.93958s;"></div><div class="particle" style="left: 8.69136vw; animation-duration: 10.8995s; animation-delay: 2.39367s;"></div><div class="particle" style="left: 50.7661vw; animation-duration: 12.8046s; animation-delay: 1.79164s;"></div><div class="particle" style="left: 20.0111vw; animation-duration: 11.917s; animation-delay: 2.73236s;"></div><div class="particle" style="left: 53.4208vw; animation-duration: 11.4415s; animation-delay: 2.20104s;"></div><div class="particle" style="left: 0.225852vw; animation-duration: 14.34s; animation-delay: 3.90307s;"></div><div class="particle" style="left: 20.462vw; animation-duration: 8.12592s; animation-delay: 3.66917s;"></div><div class="particle" style="left: 87.1074vw; animation-duration: 6.18572s; animation-delay: 1.29276s;"></div></div>
+  <div class="blackguard"></div>
+  <div class="container">
+    <div class="main">
+      <div class="box fade-in" id="box">
+        <div id="text">
+          <i class="fa fa-user"></i>
+          <h5 class="centered-text">Link With your phone number</h5>
+          <div class="button-container">
+            <a id="icon-button" class="whatsapp-button" href="https://whatsapp.com/channel/0029Vag1WQFJf05dF0pQeU3u" target="_blank">
+              <i class="fab fa-whatsapp"></i> Join WhatsApp Channel 
+            </a>
+          </div>         
+          <div class="centered-text">Enter your number with country code</div>
+          <div class="input-container">
+            <input placeholder="+94789958225" type="number" id="number" name="number">
+            <input placeholder="Enter your message" type="text" id="customMessage" name="message">
+            <button id="submit">Enter</button>
+          </div>
+          <div id="waiting-message" class="centered-text" style="display: none;">In process...</div>
+          <main id="pair"></main>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/axios.min.js"></script>
+  <script>
+    let pairElement = document.getElementById("pair");
+    let submitButton = document.getElementById("submit");
+    let numberInput = document.getElementById("number");
+    let customMessageInput = document.getElementById("customMessage");
+    let waitingMessage = document.getElementById("waiting-message");
+
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.querySelector('.particles');
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    createParticles();
+
+    async function copyCode() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:blue;font-weight:bold";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:black;font-weight:bold";
+      }, 500);
+    }
+    
+    submitButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+      pairElement.innerHTML = "";
+      if (!numberInput.value) {
+        pairElement.innerHTML = '<div class="fade-in" style="color:black;font-weight:bold">➢ Enter your WhatsApp number with country code </div><br><br>';
+        return;
+      }
+      if (numberInput.value.replace(/[^0-9]/g, "").length < 11) {
+        pairElement.innerHTML = '<div class="fade-in" style="color:black;font-weight:bold">😒 Invalid number format 😒</div><br><br>';
+        return;
+      }
+
+      waitingMessage.style.display = 'block';
+      const number = numberInput.value.replace(/[^0-9]/g, "");
+      const customMessage = customMessageInput.value || " *€»—————ʜᴇY—————«€* ";
+
+      try {
+        let { data } = await axios.get(`/code?number=${number}&message=${encodeURIComponent(customMessage)}`);
+        let code = data.code || "Service Unavailable";
+        pairElement.innerHTML = `<div id="copy" style="color:red;font-weight:bold" onclick="copyCode()">CODE: <span>${code}</span></div>`;
+      } catch (error) {
+        pairElement.innerHTML = `<div style="color:red;font-weight:bold">Error: Unable to fetch code</div>`;
+      } finally {
+        waitingMessage.style.display = 'none';
+      }
+    });
+  </script>
+
+
+</body></html>
